@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CharacterCard from "../CharacterCard";
 
-class Characters extends Component {
+const Characters = props => {
   
+  console.log("characters render called")
 
-  render() { 
-
-    return ( 
-      <div>
-        { this.props.characters.map(character => (
-          <CharacterCard 
-            key={character.id} 
-            id={character.id} 
-            character={character}
-            handleClick={this.props.handleClick}
-          />
-        ))}
-      </div>
-     );
-  }
+  return (
+    <div>
+      { props.characters.map(character => (
+        <CharacterCard 
+          key={character.id} 
+          id={character.id} 
+          character={character}
+          handleClick={props.handleClick}
+        />
+      ))}
+    </div>
+   );
 }
  
 export default Characters;

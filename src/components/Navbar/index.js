@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Navbar extends Component {
+const Navbar = props => {
 
 
+  console.log("navbar render called");
 
-  render() { 
-    console.log(this.props);
-    return ( 
+  return (
       <nav className="navbar navbar-light bg-light">
-        <span className="navbar-brand mb-0 h1">{this.props.currentScoreClicks}</span>
-        <span className="navbar-brand mb-12 h1">{this.props.children}</span>
+        <span className="navbar-brand mb-0 h1">Current Score: { props.currentScoreClicks() }</span>
       </nav>
      );
-  }
 }
  
 export default Navbar;

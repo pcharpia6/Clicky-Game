@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './style.css';
 
-class CharacterCard extends Component {
+const CharacterCard = props => {
 
-  render() {
-    
-  console.log(this.props.character);
-    return ( 
-      <div className="card">
-        <div className="img-container" 
-          onClick={() => this.props.handleClick(this.props.character)}>
-            <img alt={this.props.character.name} src={this.props.character.image} />
+  return (
+    <div 
+      className="card" 
+      key={props.character.key} 
+      onClick={() => props.handleClick(props.character.id)}
+      >
+        <div 
+        className="img-container"
+        >
+            <img 
+            alt={props.character.name} 
+            src={props.character.image} />
         </div>
       </div>
-    );
-  };
+  )
 };
  
 export default CharacterCard;
