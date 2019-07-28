@@ -4,6 +4,7 @@ import Title from "./components/Title";
 import './App.css';
 import Characters from "./components/Characters";
 import Navbar from './components/Navbar';
+import Instructions from './components/Instructions';
 import characters from "./characters.json";
 
 function shuffle(characters) {
@@ -34,7 +35,6 @@ class App extends Component {
   };
 
   handleClick = id => {
-    console.log("ID = ", id);
     if (this.state.clicked.indexOf(id) === -1) {
       //Looks up the character ID in the state.clicked, if it's not present then it continues
       // Cannot push into a state array, so concat cleanly makes a new array to play with
@@ -54,22 +54,28 @@ class App extends Component {
   }
 
   handleGameOver = () => {
-    console.log("gameover called");
+    this.handleReset();
+    alert("You Lose!")
+    this.handleShuffle();
+  }
+
+  handleReset = () => {
     this.setState({
       clicked: [],
       currentScore: 0,
     });
-    this.handleShuffle();
   }
 
   handleCurrentScore = () => {
-    console.log("handlecurrentscore called")
+    if (this.state.clicked.length === 12) {
+      alert("You Win!");
+      this.handleReset();
+    }
     return this.state.clicked.length;
+    
   }
 
   render() { 
-    console.log("App render called");
-    console.log(this.state.characters);
     return (
       <React.Fragment>
         <Navbar 
@@ -77,6 +83,7 @@ class App extends Component {
         />
         <Wrapper>
           <Title>Clicky Game!</Title>
+          <Instructions></Instructions>
           <Characters 
           characters={this.state.characters}
           handleClick={this.handleClick}/>

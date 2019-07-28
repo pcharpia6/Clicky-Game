@@ -2,11 +2,8 @@ import React from 'react';
 import CharacterCard from "../CharacterCard";
 
 const Characters = props => {
-  
-  console.log("characters render called")
-
-  return (
-    <div>
+    return (
+    <div className="container justify-content-center">
       { props.characters.map(character => (
         <CharacterCard 
           key={character.id} 
